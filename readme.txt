@@ -2,7 +2,7 @@
 Contributors: meloniq
 Tags: glotpress, translate, openai
 Requires at least: 4.9
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 1.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,7 +11,7 @@ A OpenAI translate plugin for GlotPress as a WordPress plugin.
 
 == Description ==
 
-A OpenAI translate plugin for [GlotPress as a WordPress plugin](https://github.com/GlotPress/GlotPress).
+A OpenAI translate plugin for [GlotPress as a WordPress plugin](https://wordpress.org/plugins/glotpress/).
 
 
 Note: This plugin assumes the source language is English as support for automated translation from other source languages is limited.
@@ -20,19 +20,20 @@ Note: This plugin assumes the source language is English as support for automate
 
 Once you have installed GP OpenAI Translate, go to your WordPress admin screen and select "Settings > GP OpenAI Translate".
 
-You will have three Fields to configure:
+You will have few fields to configure:
 
-	1. Translation Provider
-	2. Global API Key
-	3. Client ID
+	1. Global API Key
+	2. OpenAI Model
+	3. Temperature (where lower values indicating greater determinism and higher values indicating more randomness)
+	4. Custom Prompt (if you would like to adjust what the AI is returning, eg. glossary tips)
+
+Each user can adjust, change these configuration on his profile page.
 
 = OpenAI =
 
-DeepL has a free tier that allows you to access the API for 500k characters per month.  Additional characters require a DeepL API Pro (aka paid) account.
-
-* Login/signup [DeepL API](https://www.deepl.com/)
-* Go to your account and scroll down to [Authentication Key for DeepL API](https://www.deepl.com/pro-account/summary)
-* Copy the `Authentication Key` and put it into `Global API Key` of GP OpenAI Translate.
+* Login/signup [OpenAI API](https://platform.openai.com/)
+* Go to your account and scroll down to [API keys](https://platform.openai.com/settings/organization/api-keys)
+* Create new `secret key` and put it into `Global API Key` of GP OpenAI Translate.
 
 
 = Setting the API key =
@@ -47,5 +48,4 @@ Note, if both a global and user API key are set, the user API key will override 
 == Changelog ==
 
 = 1.0 =
-* Release date: October 21, 2024
 * Initial release.
