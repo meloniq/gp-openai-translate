@@ -3,6 +3,7 @@ namespace Gp\OpenaiTranslate;
 
 use Orhanerday\OpenAi\OpenAi;
 use GP;
+use GP_Locales;
 use WP_Error;
 
 class Translate {
@@ -70,8 +71,14 @@ class Translate {
 		$api_key = Config::get_api_key();
 		$openai  = new OpenAi( $api_key );
 
+		// get locale object
+		$locale_obj = GP_Locales::by_slug( $locale );
+		if ( ! $locale_obj ) {
+			return new WP_Error( 'gp_set_no_locale', 'Locale not found!' );
+		}
+
 		// get prompt
-		$base_prompt   = sprintf( 'Translate the following text to language with locale %s: ', $locale );
+		$base_prompt   = sprintf( 'Translate the following text to %s language: ', $locale_obj->english_name );
 		$custom_prompt = Config::get_custom_prompt();
 		$prompt        = $custom_prompt . ' ' . $base_prompt . ' ' . $text;
 
