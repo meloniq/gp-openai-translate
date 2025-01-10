@@ -21,8 +21,8 @@ class AdminPage {
 	public function add_menu_page() : void {
 		add_submenu_page(
 			'options-general.php',
-			__( 'GP OpenAI Translate', GP_OAI_TD ),
-			__( 'GP OpenAI Translate', GP_OAI_TD ),
+			__( 'GP OpenAI Translate', 'gp-openai-translate' ),
+			__( 'GP OpenAI Translate', 'gp-openai-translate' ),
 			'manage_options',
 			'gp-openai-translate',
 			array( $this, 'render_page' )
@@ -37,7 +37,7 @@ class AdminPage {
 	public function render_page() : void {
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'GP OpenAI Translate', GP_OAI_TD ); ?></h1>
+			<h1><?php esc_html_e( 'GP OpenAI Translate', 'gp-openai-translate' ); ?></h1>
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( 'gp_oai_settings' );

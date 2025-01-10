@@ -22,7 +22,7 @@ class Settings {
 		// Section: OpenAI API.
 		add_settings_section(
 			'gp_oai_section',
-			__( 'OpenAI API', GP_OAI_TD ),
+			__( 'OpenAI API', 'gp-openai-translate' ),
 			array( $this, 'render_section' ),
 			'gp_oai_settings'
 		);
@@ -47,7 +47,7 @@ class Settings {
 	 * @return void
 	 */
 	public function render_section() : void {
-		esc_html_e( 'Settings for OpenAI API access.', GP_OAI_TD );
+		esc_html_e( 'Settings for OpenAI API access.', 'gp-openai-translate' );
 	}
 
 	/**
@@ -64,8 +64,8 @@ class Settings {
 			$settings_name,
 			$field_name,
 			array(
-				'label'             => __( 'OpenAI API Key', GP_OAI_TD ),
-				'description'       => __( 'Enter the OpenAI API Key.', GP_OAI_TD ),
+				'label'             => __( 'OpenAI API Key', 'gp-openai-translate' ),
+				'description'       => __( 'Enter the OpenAI API Key.', 'gp-openai-translate' ),
 				'type'              => 'string',
 				'sanitize_callback' => 'sanitize_text_field',
 				'default'           => '',
@@ -75,7 +75,7 @@ class Settings {
 
 		add_settings_field(
 			$field_name,
-			__( 'OpenAI API Key', GP_OAI_TD ),
+			__( 'OpenAI API Key', 'gp-openai-translate' ),
 			array( $this, 'render_field_api_key' ),
 			$settings_name,
 			$section_name,
@@ -99,8 +99,8 @@ class Settings {
 			$settings_name,
 			$field_name,
 			array(
-				'label'             => __( 'OpenAI Model', GP_OAI_TD ),
-				'description'       => __( 'Select the OpenAI Model.', GP_OAI_TD ),
+				'label'             => __( 'OpenAI Model', 'gp-openai-translate' ),
+				'description'       => __( 'Select the OpenAI Model.', 'gp-openai-translate' ),
 				'type'              => 'string',
 				'sanitize_callback' => 'sanitize_text_field',
 				'default'           => '',
@@ -110,7 +110,7 @@ class Settings {
 
 		add_settings_field(
 			$field_name,
-			__( 'OpenAI Model', GP_OAI_TD ),
+			__( 'OpenAI Model', 'gp-openai-translate' ),
 			array( $this, 'render_field_model' ),
 			$settings_name,
 			$section_name,
@@ -129,8 +129,8 @@ class Settings {
 			$settings_name,
 			$field_name,
 			array(
-				'label'             => __( 'OpenAI Custom Prompt', GP_OAI_TD ),
-				'description'       => __( 'Enter your custom prompt for OpenAI translation suggestions.', GP_OAI_TD ),
+				'label'             => __( 'OpenAI Custom Prompt', 'gp-openai-translate' ),
+				'description'       => __( 'Enter your custom prompt for OpenAI translation suggestions.', 'gp-openai-translate' ),
 				'type'              => 'string',
 				'sanitize_callback' => 'sanitize_text_field',
 				'default'           => '',
@@ -140,7 +140,7 @@ class Settings {
 
 		add_settings_field(
 			$field_name,
-			__( 'OpenAI Custom Prompt', GP_OAI_TD ),
+			__( 'OpenAI Custom Prompt', 'gp-openai-translate' ),
 			array( $this, 'render_field_custom_prompt' ),
 			$settings_name,
 			$section_name,
@@ -164,8 +164,8 @@ class Settings {
 			$settings_name,
 			$field_name,
 			array(
-				'label'             => __( 'OpenAI Temperature', GP_OAI_TD ),
-				'description'       => __( 'Enter the OpenAI Temperature.', GP_OAI_TD ),
+				'label'             => __( 'OpenAI Temperature', 'gp-openai-translate' ),
+				'description'       => __( 'Enter the OpenAI Temperature.', 'gp-openai-translate' ),
 				'type'              => 'string',
 				'sanitize_callback' => 'sanitize_text_field',
 				'default'           => '',
@@ -175,7 +175,7 @@ class Settings {
 
 		add_settings_field(
 			$field_name,
-			__( 'OpenAI Temperature', GP_OAI_TD ),
+			__( 'OpenAI Temperature', 'gp-openai-translate' ),
 			array( $this, 'render_field_temperature' ),
 			$settings_name,
 			$section_name,
@@ -196,7 +196,7 @@ class Settings {
 		$api_key = get_option( $field_name, '' );
 		?>
 		<input type="text" name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( $api_key ); ?>" class="regular-text">
-		<p class="description"><?php esc_html_e( 'Enter the OpenAI API Key.', GP_OAI_TD ); ?></p>
+		<p class="description"><?php esc_html_e( 'Enter the OpenAI API Key.', 'gp-openai-translate' ); ?></p>
 		<?php
 	}
 
@@ -223,7 +223,7 @@ class Settings {
 			<option value="<?php echo esc_attr( $model_name ); ?>" <?php selected( $model, $model_name ); ?>><?php echo esc_html( $model_name ); ?></option>
 		<?php } ?>
 		</select>
-		<p class="description"><?php esc_html_e( 'Select the OpenAI Model.', GP_OAI_TD ); ?> <?php esc_html_e( 'Default:', GP_OAI_TD ); ?><code>gpt-3.5-turbo</code></p>
+		<p class="description"><?php esc_html_e( 'Select the OpenAI Model.', 'gp-openai-translate' ); ?> <?php esc_html_e( 'Default:', 'gp-openai-translate' ); ?><code>gpt-3.5-turbo</code></p>
 		<?php
 	}
 
@@ -238,7 +238,7 @@ class Settings {
 		$custom_prompt = get_option( $field_name, '' );
 		?>
 		<textarea name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>" class="large-text"><?php echo esc_textarea( $custom_prompt ); ?></textarea>
-		<p class="description"><?php esc_html_e( 'Enter your custom prompt for OpenAI translation suggestions.', GP_OAI_TD ); ?></p>
+		<p class="description"><?php esc_html_e( 'Enter your custom prompt for OpenAI translation suggestions.', 'gp-openai-translate' ); ?></p>
 		<?php
 	}
 
@@ -253,7 +253,7 @@ class Settings {
 		$temp = get_option( $field_name, 0 );
 		?>
 		<input type="text" name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( $temp ); ?>" class="regular-text">
-		<p class="description"><?php esc_html_e( 'Enter the OpenAI Temperature.', GP_OAI_TD ); ?> <?php esc_html_e( 'Default:', GP_OAI_TD ); ?><code>0</code></p>
+		<p class="description"><?php esc_html_e( 'Enter the OpenAI Temperature.', 'gp-openai-translate' ); ?> <?php esc_html_e( 'Default:', 'gp-openai-translate' ); ?><code>0</code></p>
 		<?php
 	}
 

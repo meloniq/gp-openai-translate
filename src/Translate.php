@@ -284,7 +284,7 @@ class Translate {
 		// If there are no errors, display how many translations were added.
 		if ( $count['err_api'] == 0 && $count['err_add'] == 0 ) {
 			// translators: %d is the number of translations added.
-			gp_notice_set( sprintf( __( '%d fuzzy translation from OpenAI were added.', GP_OAI_TD ), $count['added'] ) );
+			gp_notice_set( sprintf( __( '%d fuzzy translation from OpenAI were added.', 'gp-openai-translate' ), $count['added'] ) );
 			return;
 		}
 
@@ -292,22 +292,22 @@ class Translate {
 
 		if ( $count['added'] ) {
 			// translators: %d is the number of translations added.
-			$messages[] = sprintf( __( 'Added: %d.', GP_OAI_TD ), $count['added'] );
+			$messages[] = sprintf( __( 'Added: %d.', 'gp-openai-translate' ), $count['added'] );
 		}
 
 		if ( $count['err_api'] ) {
 			// translators: %d is the number of errors from OpenAI.
-			$messages[] = sprintf( __( 'Error from OpenAI: %d.', GP_OAI_TD ), $count['err_api'] );
+			$messages[] = sprintf( __( 'Error from OpenAI: %d.', 'gp-openai-translate' ), $count['err_api'] );
 		}
 
 		if ( $count['err_add'] ) {
 			// translators: %d is the number of errors adding translations.
-			$messages[] = sprintf( __( 'Error adding: %d.', GP_OAI_TD ), $count['err_add'] );
+			$messages[] = sprintf( __( 'Error adding: %d.', 'gp-openai-translate' ), $count['err_add'] );
 		}
 
 		if ( $count['skipped'] ) {
 			// translators: %d is the number of skipped translations.
-			$messages[] = sprintf( __( 'Skipped: %d.', GP_OAI_TD ), $count['skipped'] );
+			$messages[] = sprintf( __( 'Skipped: %d.', 'gp-openai-translate' ), $count['skipped'] );
 		}
 
 		// Create a message string and add it to the GlotPress notices.

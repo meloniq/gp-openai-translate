@@ -68,7 +68,7 @@ class Frontend {
 			return $actions;
 		}
 
-		$actions[] = '<a href="#" class="gp_openai_translate" tabindex="-1">' . esc_html__( 'OpenAI Translate', GP_OAI_TD ) . '</a><br>';
+		$actions[] = '<a href="#" class="gp_openai_translate" tabindex="-1">' . esc_html__( 'OpenAI Translate', 'gp-openai-translate' ) . '</a><br>';
 
 		return $actions;
 	}
@@ -83,7 +83,7 @@ class Frontend {
 			return;
 		}
 
-		echo '<option value="gp_openai_translate">' . esc_html__( 'OpenAI Translate', GP_OAI_TD ) . '</option>';
+		echo '<option value="gp_openai_translate">' . esc_html__( 'OpenAI Translate', 'gp-openai-translate' ) . '</option>';
 	}
 
 	/**
