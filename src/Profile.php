@@ -53,11 +53,12 @@ class Profile {
 		$custom_prompt = get_user_meta( $user->ID, 'gp_oai_custom_prompt', true );
 		$temperature   = get_user_meta( $user->ID, 'gp_oai_temperature', true );
 		?>
-		<h3 id="gp-openai-translate"><?php _e( 'GP OpenAI Translate', GP_OAI_TD ); ?></h3>
+		<h3 id="gp-openai-translate"><?php esc_html_e( 'GP OpenAI Translate', GP_OAI_TD ); ?></h3>
+		<input type="hidden" name="gp_oai_nonce" value="<?php echo esc_attr( wp_create_nonce( 'gp_oai_nonce' ) ); ?>">
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="gp_oai_api_key"><?php _e( 'OpenAI API Key', GP_OAI_TD ); ?></label>
+					<label for="gp_oai_api_key"><?php esc_html_e( 'OpenAI API Key', GP_OAI_TD ); ?></label>
 				</th>
 				<td>
 					<input type="text" id="gp_oai_api_key" name="gp_oai_api_key" value="<?php echo esc_attr( $api_key ); ?>">
@@ -66,12 +67,12 @@ class Profile {
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_model"><?php _e( 'OpenAI Model', GP_OAI_TD ); ?></label>
+					<label for="gp_oai_model"><?php esc_html_e( 'OpenAI Model', GP_OAI_TD ); ?></label>
 				</th>
 				<td>
 					<select name="gp_oai_model" id="gp_oai_model">
 					<?php foreach ( $models as $model_name ) { ?>
-						<option value="<?php echo $model_name; ?>" <?php selected( $model, $model_name ); ?>><?php echo $model_name; ?></option>
+						<option value="<?php echo esc_attr( $model_name ); ?>" <?php selected( $model, $model_name ); ?>><?php echo esc_html( $model_name ); ?></option>
 					<?php } ?>
 					</select>
 					<p class="description"><?php esc_html_e( 'Select the OpenAI Model.', GP_OAI_TD ); ?></p>
@@ -79,7 +80,7 @@ class Profile {
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_custom_prompt"><?php _e( 'OpenAI Custom Prompt', GP_OAI_TD ); ?></label>
+					<label for="gp_oai_custom_prompt"><?php esc_html_e( 'OpenAI Custom Prompt', GP_OAI_TD ); ?></label>
 				</th>
 				<td>
 					<textarea name="gp_oai_custom_prompt" id="gp_oai_custom_prompt" class="large-text"><?php echo esc_attr( $custom_prompt ); ?></textarea>
@@ -88,7 +89,7 @@ class Profile {
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_temperature"><?php _e( 'OpenAI Temperature', GP_OAI_TD ); ?></label>
+					<label for="gp_oai_temperature"><?php esc_html_e( 'OpenAI Temperature', GP_OAI_TD ); ?></label>
 				</th>
 				<td>
 					<input type="text" id="gp_oai_temperature" name="gp_oai_temperature" value="<?php echo esc_attr( $temperature ); ?>">
@@ -112,10 +113,25 @@ class Profile {
 			return;
 		}
 
-		update_user_meta( $user->ID, 'gp_oai_api_key', sanitize_text_field( $_POST['gp_oai_api_key'] ) );
-		update_user_meta( $user->ID, 'gp_oai_model', sanitize_text_field( $_POST['gp_oai_model'] ) );
-		update_user_meta( $user->ID, 'gp_oai_custom_prompt', sanitize_text_field( $_POST['gp_oai_custom_prompt'] ) );
-		update_user_meta( $user->ID, 'gp_oai_temperature', sanitize_text_field( $_POST['gp_oai_temperature'] ) );
+		// Nonce check.
+		if ( ! isset( $_POST['gp_oai_nonce'] ) ) {
+			return;
+		}
+
+		$nonce = sanitize_text_field( wp_unslash( $_POST['gp_oai_nonce'] ) );
+		if ( ! wp_verify_nonce( $nonce, 'gp_oai_nonce' ) ) {
+			return;
+		}
+
+		$api_key       = isset( $_POST['gp_oai_api_key'] ) ? sanitize_text_field( wp_unslash( $_POST['gp_oai_api_key'] ) ) : '';
+		$model         = isset( $_POST['gp_oai_model'] ) ? sanitize_text_field( wp_unslash( $_POST['gp_oai_model'] ) ) : '';
+		$custom_prompt = isset( $_POST['gp_oai_custom_prompt'] ) ? sanitize_text_field( wp_unslash( $_POST['gp_oai_custom_prompt'] ) ) : '';
+		$temperature   = isset( $_POST['gp_oai_temperature'] ) ? sanitize_text_field( wp_unslash( $_POST['gp_oai_temperature'] ) ) : '';
+
+		update_user_meta( $user->ID, 'gp_oai_api_key', $api_key );
+		update_user_meta( $user->ID, 'gp_oai_model', $model );
+		update_user_meta( $user->ID, 'gp_oai_custom_prompt', $custom_prompt );
+		update_user_meta( $user->ID, 'gp_oai_temperature', $temperature );
 	}
 
 	/**

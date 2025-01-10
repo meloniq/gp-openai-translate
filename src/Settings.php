@@ -195,7 +195,7 @@ class Settings {
 
 		$api_key = get_option( $field_name, '' );
 		?>
-		<input type="text" name="<?php echo $field_name; ?>" id="<?php echo $field_name; ?>" value="<?php echo $api_key; ?>" class="regular-text">
+		<input type="text" name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( $api_key ); ?>" class="regular-text">
 		<p class="description"><?php esc_html_e( 'Enter the OpenAI API Key.', GP_OAI_TD ); ?></p>
 		<?php
 	}
@@ -218,9 +218,9 @@ class Settings {
 
 		$model = get_option( $field_name, 'gpt-3.5-turbo' );
 		?>
-		<select name="<?php echo $field_name; ?>" id="<?php echo $field_name; ?>">
+		<select name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>">
 		<?php foreach ( $models as $model_name ) { ?>
-			<option value="<?php echo $model_name; ?>" <?php selected( $model, $model_name ); ?>><?php echo $model_name; ?></option>
+			<option value="<?php echo esc_attr( $model_name ); ?>" <?php selected( $model, $model_name ); ?>><?php echo esc_html( $model_name ); ?></option>
 		<?php } ?>
 		</select>
 		<p class="description"><?php esc_html_e( 'Select the OpenAI Model.', GP_OAI_TD ); ?> <?php esc_html_e( 'Default:', GP_OAI_TD ); ?><code>gpt-3.5-turbo</code></p>
@@ -237,7 +237,7 @@ class Settings {
 
 		$custom_prompt = get_option( $field_name, '' );
 		?>
-		<textarea name="<?php echo $field_name; ?>" id="<?php echo $field_name; ?>" class="large-text"><?php echo $custom_prompt; ?></textarea>
+		<textarea name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>" class="large-text"><?php echo esc_textarea( $custom_prompt ); ?></textarea>
 		<p class="description"><?php esc_html_e( 'Enter your custom prompt for OpenAI translation suggestions.', GP_OAI_TD ); ?></p>
 		<?php
 	}
@@ -252,7 +252,7 @@ class Settings {
 
 		$temp = get_option( $field_name, 0 );
 		?>
-		<input type="text" name="<?php echo $field_name; ?>" id="<?php echo $field_name; ?>" value="<?php echo $temp; ?>" class="regular-text">
+		<input type="text" name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( $temp ); ?>" class="regular-text">
 		<p class="description"><?php esc_html_e( 'Enter the OpenAI Temperature.', GP_OAI_TD ); ?> <?php esc_html_e( 'Default:', GP_OAI_TD ); ?><code>0</code></p>
 		<?php
 	}

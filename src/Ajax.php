@@ -22,11 +22,24 @@ class Ajax {
 		global $gp_openai_translate;
 
 		if ( ! isset( $gp_openai_translate ) ) {
-			wp_send_json( array( 'success' => false, 'message' => 'GlotPress not yet loaded.' ) );
+			wp_send_json( array( 'success' => false, 'error' => array( 'message' => 'GlotPress not yet loaded.', 'reason' => '' ) ) );
 		}
 
-		$locale = sanitize_text_field( $_POST['locale'] );
-		$string = sanitize_text_field( $_POST['original'] );
+		if ( ! isset( $_POST['original'] ) || ! isset( $_POST['locale'] ) ) {
+			wp_send_json( array( 'success' => false, 'error' => array( 'message' => 'Missing parameters.', 'reason' => '' ) ) );
+		}
+
+		if ( ! isset( $_POST['nonce'] ) ) {
+			wp_send_json( array( 'success' => false, 'error' => array( 'message' => 'Missing nonce.', 'reason' => '' ) ) );
+		}
+
+		$nonce = sanitize_text_field( wp_unslash( $_POST['nonce'] ) );
+		if ( ! wp_verify_nonce( $nonce, 'gp_oai_nonce' ) ) {
+			wp_send_json( array( 'success' => false, 'error' => array( 'message' => 'Invalid nonce.', 'reason' => '' ) ) );
+		}
+
+		$locale = sanitize_text_field( wp_unslash( $_POST['locale'] ) );
+		$string = sanitize_text_field( wp_unslash( $_POST['original'] ) );
 
 		$translate  = Translate::instance();
 		$new_string = $translate->translate( $string, $locale );

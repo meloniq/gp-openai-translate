@@ -24,6 +24,7 @@ $gp.openai_translate = function( $ ) { return {
 			'action': 'gp_openai_translate',
 			'query': '',
 			'locale': gp_openai_translate.locale,
+			'nonce': gp_openai_translate.nonce,
 			'original': original_text,
 		};
 
