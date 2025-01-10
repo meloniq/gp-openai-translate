@@ -36,7 +36,7 @@ $gp.openai_translate = function( $ ) { return {
 		})
 		.always( function( result ) {
 			if( ! result.error && result.data.translatedText != '' ) {
-				link.parent( 'div' ).parent( 'div' ).children( 'textarea' ).html( result.data.translatedText ).focus();
+				link.parent( 'div' ).parent( 'div' ).children( 'textarea' ).val( result.data.translatedText ).focus();
 				$gp.notices.success( 'Translated!' );
 			} else {
 				$gp.notices.error( 'Error in translating via OpenAI: ' + result.error.message + ': ' + result.error.reason );
