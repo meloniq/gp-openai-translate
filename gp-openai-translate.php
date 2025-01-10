@@ -41,9 +41,6 @@ function setup() {
 	$gp_openai_translate['frontend']   = new Frontend();
 	$gp_openai_translate['ajax']       = new Ajax();
 
-	// Do not work with subprojects.
-	// Not sure if translating a whole project is a good idea.
-	//$gp_openai_translate['projectbulk'] = new ProjectBulk();
 }
 add_action( 'after_setup_theme', 'Gp\OpenaiTranslate\setup' );
 
