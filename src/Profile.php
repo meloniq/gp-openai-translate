@@ -53,21 +53,21 @@ class Profile {
 		$custom_prompt = get_user_meta( $user->ID, 'gp_oai_custom_prompt', true );
 		$temperature   = get_user_meta( $user->ID, 'gp_oai_temperature', true );
 		?>
-		<h3 id="gp-openai-translate"><?php esc_html_e( 'GP OpenAI Translate', 'gp-openai-translate' ); ?></h3>
+		<h3 id="gp-translate-with-openai"><?php esc_html_e( 'GP OpenAI Translate', 'gp-translate-with-openai' ); ?></h3>
 		<input type="hidden" name="gp_oai_nonce" value="<?php echo esc_attr( wp_create_nonce( 'gp_oai_nonce' ) ); ?>">
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="gp_oai_api_key"><?php esc_html_e( 'OpenAI API Key', 'gp-openai-translate' ); ?></label>
+					<label for="gp_oai_api_key"><?php esc_html_e( 'OpenAI API Key', 'gp-translate-with-openai' ); ?></label>
 				</th>
 				<td>
 					<input type="text" id="gp_oai_api_key" name="gp_oai_api_key" value="<?php echo esc_attr( $api_key ); ?>">
-					<p class="description"><?php esc_html_e( 'Enter the OpenAI API Key.', 'gp-openai-translate' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Enter the OpenAI API Key.', 'gp-translate-with-openai' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_model"><?php esc_html_e( 'OpenAI Model', 'gp-openai-translate' ); ?></label>
+					<label for="gp_oai_model"><?php esc_html_e( 'OpenAI Model', 'gp-translate-with-openai' ); ?></label>
 				</th>
 				<td>
 					<select name="gp_oai_model" id="gp_oai_model">
@@ -75,25 +75,25 @@ class Profile {
 						<option value="<?php echo esc_attr( $model_name ); ?>" <?php selected( $model, $model_name ); ?>><?php echo esc_html( $model_name ); ?></option>
 					<?php } ?>
 					</select>
-					<p class="description"><?php esc_html_e( 'Select the OpenAI Model.', 'gp-openai-translate' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Select the OpenAI Model.', 'gp-translate-with-openai' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_custom_prompt"><?php esc_html_e( 'OpenAI Custom Prompt', 'gp-openai-translate' ); ?></label>
+					<label for="gp_oai_custom_prompt"><?php esc_html_e( 'OpenAI Custom Prompt', 'gp-translate-with-openai' ); ?></label>
 				</th>
 				<td>
 					<textarea name="gp_oai_custom_prompt" id="gp_oai_custom_prompt" class="large-text"><?php echo esc_attr( $custom_prompt ); ?></textarea>
-					<p class="description"><?php esc_html_e( 'Enter your custom prompt for OpenAI translation suggestions.', 'gp-openai-translate' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Enter your custom prompt for OpenAI translation suggestions.', 'gp-translate-with-openai' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_temperature"><?php esc_html_e( 'OpenAI Temperature', 'gp-openai-translate' ); ?></label>
+					<label for="gp_oai_temperature"><?php esc_html_e( 'OpenAI Temperature', 'gp-translate-with-openai' ); ?></label>
 				</th>
 				<td>
 					<input type="text" id="gp_oai_temperature" name="gp_oai_temperature" value="<?php echo esc_attr( $temperature ); ?>">
-					<p class="description"><?php esc_html_e( 'Enter the OpenAI Temperature.', 'gp-openai-translate' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Enter the OpenAI Temperature.', 'gp-translate-with-openai' ); ?></p>
 				</td>
 			</tr>
 		</table>

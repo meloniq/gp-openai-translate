@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: GP OpenAI Translate
- * Plugin URI: https://blog.meloniq.net/gp-openai-translate
+ * Plugin URI: https://blog.meloniq.net/gp-translate-with-openai
  * Description: OpenAI Translate plugin for GlotPress.
  * Version: 1.0
  * Author: MELONIQ.NET
@@ -9,7 +9,7 @@
  * Tags: glotpress, translate, openai
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: gp-openai-translate
+ * Text Domain: gp-translate-with-openai
  */
 
 namespace Gp\OpenaiTranslate;
@@ -19,7 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'GP_OAI_TD', 'gp-openai-translate' );
+define( 'GP_OAI_TD', 'gp-translate-with-openai' );
 define( 'GP_OAI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GP_OAI_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
