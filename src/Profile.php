@@ -53,7 +53,7 @@ class Profile {
 		$custom_prompt = get_user_meta( $user->ID, 'gp_oai_custom_prompt', true );
 		$temperature   = get_user_meta( $user->ID, 'gp_oai_temperature', true );
 		?>
-		<h3 id="gp-translate-with-openai"><?php esc_html_e( 'GP OpenAI Translate', 'gp-translate-with-openai' ); ?></h3>
+		<h3 id="gp-translate-with-openai"><?php esc_html_e( 'GP Translate with OpenAI', 'gp-translate-with-openai' ); ?></h3>
 		<input type="hidden" name="gp_oai_nonce" value="<?php echo esc_attr( wp_create_nonce( 'gp_oai_nonce' ) ); ?>">
 		<table class="form-table">
 			<tr>

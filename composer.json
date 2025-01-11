@@ -1,6 +1,6 @@
 {
     "name": "gp/openai-translate",
-    "description": "OpenAI Translate plugin for GlotPress.",
+    "description": "GlotPress Translate with OpenAI.",
     "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {

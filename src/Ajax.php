@@ -9,7 +9,7 @@ class Ajax {
 	 * @return void
 	 */
 	public function __construct() {
-		add_action( 'wp_ajax_gp_openai_translate', array( $this, 'translate' ), 10 );
+		add_action( 'wp_ajax_gp_oai_translate', array( $this, 'translate' ), 10 );
 
 	}
 
@@ -19,9 +19,9 @@ class Ajax {
 	 * @return void
 	 */
 	public function translate() {
-		global $gp_openai_translate;
+		global $gp_oai_translate;
 
-		if ( ! isset( $gp_openai_translate ) ) {
+		if ( ! isset( $gp_oai_translate ) ) {
 			wp_send_json( array( 'success' => false, 'error' => array( 'message' => 'GlotPress not yet loaded.', 'reason' => '' ) ) );
 		}
 

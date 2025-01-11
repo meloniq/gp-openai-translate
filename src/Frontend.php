@@ -51,9 +51,9 @@ class Frontend {
 			'nonce'   => wp_create_nonce( 'gp_oai_nonce' ),
 		);
 
-		wp_register_script( 'gp-translate-with-openai-js', plugins_url( 'assets/gp-translate-with-openai.js', dirname( __FILE__ ) ), array( 'jquery', 'editor', 'gp-common' ), '1.0', true );
+		wp_register_script( 'gp-translate-with-openai-js', plugins_url( 'assets/gp_oai_translate.js', dirname( __FILE__ ) ), array( 'jquery', 'editor', 'gp-common' ), '1.0', true );
 		gp_enqueue_script( 'gp-translate-with-openai-js' );
-		wp_localize_script( 'gp-translate-with-openai-js', 'gp_openai_translate', $options );
+		wp_localize_script( 'gp-translate-with-openai-js', 'gp_oai_translate', $options );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class Frontend {
 			return $actions;
 		}
 
-		$actions[] = '<a href="#" class="gp_openai_translate" tabindex="-1">' . esc_html__( 'OpenAI Translate', 'gp-translate-with-openai' ) . '</a><br>';
+		$actions[] = '<a href="#" class="gp_oai_translate" tabindex="-1">' . esc_html__( 'Translate with OpenAI', 'gp-translate-with-openai' ) . '</a><br>';
 
 		return $actions;
 	}
@@ -83,7 +83,7 @@ class Frontend {
 			return;
 		}
 
-		echo '<option value="gp_openai_translate">' . esc_html__( 'OpenAI Translate', 'gp-translate-with-openai' ) . '</option>';
+		echo '<option value="gp_oai_translate">' . esc_html__( 'Translate with OpenAI', 'gp-translate-with-openai' ) . '</option>';
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Frontend {
 	 */
 	public function gp_translation_set_bulk_action_post( $project, $locale, $translation_set, $bulk ) : void {
 		// Check if the action is the one we are looking for.
-		if ( 'gp_openai_translate' !== $bulk['action'] ) {
+		if ( 'gp_oai_translate' !== $bulk['action'] ) {
 			return;
 		}
 
