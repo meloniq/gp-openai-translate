@@ -1,7 +1,6 @@
 === GP Translate with OpenAI ===
 Contributors: meloniq
-Tags: glotpress, translate, openai
-Requires at least: 4.9
+Tags: glotpress, translate, machine translate, openai, chatgpt
 Tested up to: 6.7
 Stable tag: 1.0
 License: GPLv2
