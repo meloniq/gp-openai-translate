@@ -1,5 +1,5 @@
 <?php
-namespace Gp\OpenaiTranslate;
+namespace Meloniq\GpOpenaiTranslate;
 
 use Orhanerday\OpenAi\OpenAi;
 use GP;
@@ -132,17 +132,17 @@ class Translate {
 	 */
 	protected function openai_translate_batch( $locale, $strings ) {
 		if ( ! Locales::is_supported( $locale ) ) {
-			return new WP_Error( 'gp_oai_translate', sprintf( "The locale %s isn't supported by OpenAI.", $locale ) );
+			return new WP_Error( 'gpoai_translate', sprintf( "The locale %s isn't supported by OpenAI.", $locale ) );
 		}
 
 		// If we don't have any strings, throw an error.
 		if ( count( $strings ) == 0 ) {
-			return new WP_Error( 'gp_oai_translate', 'No strings found to translate.' );
+			return new WP_Error( 'gpoai_translate', 'No strings found to translate.' );
 		}
 
 		// If we have too many strings, throw an error.
 		if ( count( $strings ) > 50 ) {
-			return new WP_Error( 'gp_oai_translate', 'Only 50 strings allowed.' );
+			return new WP_Error( 'gpoai_translate', 'Only 50 strings allowed.' );
 		}
 
 		$translated_strings = array();
@@ -153,7 +153,7 @@ class Translate {
 		// Merge the originals and translations arrays.
 		$items = gp_array_zip( $strings, $translated_strings );
 		if ( ! $items ) {
-			return new WP_Error( 'gp_oai_translate', 'Error merging arrays' );
+			return new WP_Error( 'gpoai_translate', 'Error merging arrays' );
 		}
 
 		// Loop through the items and clean up the responses.

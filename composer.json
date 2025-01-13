@@ -1,10 +1,10 @@
 {
-    "name": "gp/openai-translate",
+    "name": "meloniq/gp-openai-translate",
     "description": "GlotPress Translate with OpenAI.",
     "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {
-            "Gp\\OpenaiTranslate\\": "src/"
+            "Meloniq\\GpOpenaiTranslate\\": "src/"
         }
     },
     "authors": [

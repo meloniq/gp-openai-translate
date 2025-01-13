@@ -7,5 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Orhanerday\\OpenAi\\' => array($vendorDir . '/orhanerday/open-ai/src'),
-    'Gp\\OpenaiTranslate\\' => array($baseDir . '/src'),
+    'Meloniq\\GpOpenaiTranslate\\' => array($baseDir . '/src'),
 );

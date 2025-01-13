@@ -1,5 +1,5 @@
 <?php
-namespace Gp\OpenaiTranslate;
+namespace Meloniq\GpOpenaiTranslate;
 
 class Ajax {
 
@@ -9,7 +9,7 @@ class Ajax {
 	 * @return void
 	 */
 	public function __construct() {
-		add_action( 'wp_ajax_gp_oai_translate', array( $this, 'translate' ), 10 );
+		add_action( 'wp_ajax_gpoai_translate', array( $this, 'translate' ), 10 );
 
 	}
 
@@ -19,9 +19,9 @@ class Ajax {
 	 * @return void
 	 */
 	public function translate() {
-		global $gp_oai_translate;
+		global $gpoai_translate;
 
-		if ( ! isset( $gp_oai_translate ) ) {
+		if ( ! isset( $gpoai_translate ) ) {
 			wp_send_json( array( 'success' => false, 'error' => array( 'message' => 'GlotPress not yet loaded.', 'reason' => '' ) ) );
 		}
 
@@ -34,7 +34,7 @@ class Ajax {
 		}
 
 		$nonce = sanitize_text_field( wp_unslash( $_POST['nonce'] ) );
-		if ( ! wp_verify_nonce( $nonce, 'gp_oai_nonce' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'gpoai_nonce' ) ) {
 			wp_send_json( array( 'success' => false, 'error' => array( 'message' => 'Invalid nonce.', 'reason' => '' ) ) );
 		}
 

@@ -1,5 +1,5 @@
 <?php
-namespace Gp\OpenaiTranslate;
+namespace Meloniq\GpOpenaiTranslate;
 
 class Locales {
 

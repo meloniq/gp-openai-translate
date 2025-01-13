@@ -1,5 +1,5 @@
 <?php
-namespace Gp\OpenaiTranslate;
+namespace Meloniq\GpOpenaiTranslate;
 
 class Profile {
 
@@ -48,29 +48,29 @@ class Profile {
 			'gpt-4o-mini',
 		);
 
-		$api_key       = get_user_meta( $user->ID, 'gp_oai_api_key', true );
-		$model         = get_user_meta( $user->ID, 'gp_oai_model', true );
-		$custom_prompt = get_user_meta( $user->ID, 'gp_oai_custom_prompt', true );
-		$temperature   = get_user_meta( $user->ID, 'gp_oai_temperature', true );
+		$api_key       = get_user_meta( $user->ID, 'gpoai_api_key', true );
+		$model         = get_user_meta( $user->ID, 'gpoai_model', true );
+		$custom_prompt = get_user_meta( $user->ID, 'gpoai_custom_prompt', true );
+		$temperature   = get_user_meta( $user->ID, 'gpoai_temperature', true );
 		?>
 		<h3 id="gp-translate-with-openai"><?php esc_html_e( 'GP Translate with OpenAI', 'gp-translate-with-openai' ); ?></h3>
-		<input type="hidden" name="gp_oai_nonce" value="<?php echo esc_attr( wp_create_nonce( 'gp_oai_nonce' ) ); ?>">
+		<input type="hidden" name="gpoai_nonce" value="<?php echo esc_attr( wp_create_nonce( 'gpoai_nonce' ) ); ?>">
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="gp_oai_api_key"><?php esc_html_e( 'OpenAI API Key', 'gp-translate-with-openai' ); ?></label>
+					<label for="gpoai_api_key"><?php esc_html_e( 'OpenAI API Key', 'gp-translate-with-openai' ); ?></label>
 				</th>
 				<td>
-					<input type="text" id="gp_oai_api_key" name="gp_oai_api_key" value="<?php echo esc_attr( $api_key ); ?>">
+					<input type="text" id="gpoai_api_key" name="gpoai_api_key" value="<?php echo esc_attr( $api_key ); ?>">
 					<p class="description"><?php esc_html_e( 'Enter the OpenAI API Key.', 'gp-translate-with-openai' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_model"><?php esc_html_e( 'OpenAI Model', 'gp-translate-with-openai' ); ?></label>
+					<label for="gpoai_model"><?php esc_html_e( 'OpenAI Model', 'gp-translate-with-openai' ); ?></label>
 				</th>
 				<td>
-					<select name="gp_oai_model" id="gp_oai_model">
+					<select name="gpoai_model" id="gpoai_model">
 					<?php foreach ( $models as $model_name ) { ?>
 						<option value="<?php echo esc_attr( $model_name ); ?>" <?php selected( $model, $model_name ); ?>><?php echo esc_html( $model_name ); ?></option>
 					<?php } ?>
@@ -80,19 +80,19 @@ class Profile {
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_custom_prompt"><?php esc_html_e( 'OpenAI Custom Prompt', 'gp-translate-with-openai' ); ?></label>
+					<label for="gpoai_custom_prompt"><?php esc_html_e( 'OpenAI Custom Prompt', 'gp-translate-with-openai' ); ?></label>
 				</th>
 				<td>
-					<textarea name="gp_oai_custom_prompt" id="gp_oai_custom_prompt" class="large-text"><?php echo esc_attr( $custom_prompt ); ?></textarea>
+					<textarea name="gpoai_custom_prompt" id="gpoai_custom_prompt" class="large-text"><?php echo esc_attr( $custom_prompt ); ?></textarea>
 					<p class="description"><?php esc_html_e( 'Enter your custom prompt for OpenAI translation suggestions.', 'gp-translate-with-openai' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="gp_oai_temperature"><?php esc_html_e( 'OpenAI Temperature', 'gp-translate-with-openai' ); ?></label>
+					<label for="gpoai_temperature"><?php esc_html_e( 'OpenAI Temperature', 'gp-translate-with-openai' ); ?></label>
 				</th>
 				<td>
-					<input type="text" id="gp_oai_temperature" name="gp_oai_temperature" value="<?php echo esc_attr( $temperature ); ?>">
+					<input type="text" id="gpoai_temperature" name="gpoai_temperature" value="<?php echo esc_attr( $temperature ); ?>">
 					<p class="description"><?php esc_html_e( 'Enter the OpenAI Temperature.', 'gp-translate-with-openai' ); ?></p>
 				</td>
 			</tr>
@@ -114,24 +114,24 @@ class Profile {
 		}
 
 		// Nonce check.
-		if ( ! isset( $_POST['gp_oai_nonce'] ) ) {
+		if ( ! isset( $_POST['gpoai_nonce'] ) ) {
 			return;
 		}
 
-		$nonce = sanitize_text_field( wp_unslash( $_POST['gp_oai_nonce'] ) );
-		if ( ! wp_verify_nonce( $nonce, 'gp_oai_nonce' ) ) {
+		$nonce = sanitize_text_field( wp_unslash( $_POST['gpoai_nonce'] ) );
+		if ( ! wp_verify_nonce( $nonce, 'gpoai_nonce' ) ) {
 			return;
 		}
 
-		$api_key       = isset( $_POST['gp_oai_api_key'] ) ? sanitize_text_field( wp_unslash( $_POST['gp_oai_api_key'] ) ) : '';
-		$model         = isset( $_POST['gp_oai_model'] ) ? sanitize_text_field( wp_unslash( $_POST['gp_oai_model'] ) ) : '';
-		$custom_prompt = isset( $_POST['gp_oai_custom_prompt'] ) ? sanitize_text_field( wp_unslash( $_POST['gp_oai_custom_prompt'] ) ) : '';
-		$temperature   = isset( $_POST['gp_oai_temperature'] ) ? sanitize_text_field( wp_unslash( $_POST['gp_oai_temperature'] ) ) : '';
+		$api_key       = isset( $_POST['gpoai_api_key'] ) ? sanitize_text_field( wp_unslash( $_POST['gpoai_api_key'] ) ) : '';
+		$model         = isset( $_POST['gpoai_model'] ) ? sanitize_text_field( wp_unslash( $_POST['gpoai_model'] ) ) : '';
+		$custom_prompt = isset( $_POST['gpoai_custom_prompt'] ) ? sanitize_text_field( wp_unslash( $_POST['gpoai_custom_prompt'] ) ) : '';
+		$temperature   = isset( $_POST['gpoai_temperature'] ) ? sanitize_text_field( wp_unslash( $_POST['gpoai_temperature'] ) ) : '';
 
-		update_user_meta( $user->ID, 'gp_oai_api_key', $api_key );
-		update_user_meta( $user->ID, 'gp_oai_model', $model );
-		update_user_meta( $user->ID, 'gp_oai_custom_prompt', $custom_prompt );
-		update_user_meta( $user->ID, 'gp_oai_temperature', $temperature );
+		update_user_meta( $user->ID, 'gpoai_api_key', $api_key );
+		update_user_meta( $user->ID, 'gpoai_model', $model );
+		update_user_meta( $user->ID, 'gpoai_custom_prompt', $custom_prompt );
+		update_user_meta( $user->ID, 'gpoai_temperature', $temperature );
 	}
 
 	/**

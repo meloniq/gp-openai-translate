@@ -1,5 +1,5 @@
 <?php
-namespace Gp\OpenaiTranslate;
+namespace Meloniq\GpOpenaiTranslate;
 
 class Config {
 
@@ -15,7 +15,7 @@ class Config {
 		}
 
 		// Get the global key
-		return get_option( 'gp_oai_api_key' );
+		return get_option( 'gpoai_api_key' );
 	}
 
 	/**
@@ -32,7 +32,7 @@ class Config {
 		}
 
 		// Get the user meta.
-		$user_api_key = get_user_meta( $user_id, 'gp_oai_api_key', true );
+		$user_api_key = get_user_meta( $user_id, 'gpoai_api_key', true );
 
 		return $user_api_key;
 	}
@@ -49,7 +49,7 @@ class Config {
 		}
 
 		// Get the global model.
-		return get_option( 'gp_oai_model' );
+		return get_option( 'gpoai_model' );
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Config {
 		}
 
 		// Get the user meta.
-		$user_model = get_user_meta( $user_id, 'gp_oai_model', true );
+		$user_model = get_user_meta( $user_id, 'gpoai_model', true );
 
 		return $user_model;
 	}
@@ -83,7 +83,7 @@ class Config {
 		}
 
 		// Get the global temperature.
-		return (float) get_option( 'gp_oai_temperature' );
+		return (float) get_option( 'gpoai_temperature' );
 	}
 
 	/**
@@ -100,7 +100,7 @@ class Config {
 		}
 
 		// Get the user meta.
-		$user_temperature = get_user_meta( $user_id, 'gp_oai_temperature', true );
+		$user_temperature = get_user_meta( $user_id, 'gpoai_temperature', true );
 
 		return (float) $user_temperature;
 	}
@@ -117,7 +117,7 @@ class Config {
 		}
 
 		// Get the global custom prompt.
-		return get_option( 'gp_oai_custom_prompt' );
+		return get_option( 'gpoai_custom_prompt' );
 	}
 
 	/**
@@ -134,7 +134,7 @@ class Config {
 		}
 
 		// Get the user meta.
-		$user_custom_prompt = get_user_meta( $user_id, 'gp_oai_custom_prompt', true );
+		$user_custom_prompt = get_user_meta( $user_id, 'gpoai_custom_prompt', true );
 
 		return $user_custom_prompt;
 	}

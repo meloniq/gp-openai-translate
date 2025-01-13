@@ -1,5 +1,5 @@
 <?php
-namespace Gp\OpenaiTranslate;
+namespace Meloniq\GpOpenaiTranslate;
 
 class AdminPage {
 
@@ -40,8 +40,8 @@ class AdminPage {
 			<h1><?php esc_html_e( 'GP Translate with OpenAI', 'gp-translate-with-openai' ); ?></h1>
 			<form method="post" action="options.php">
 				<?php
-				settings_fields( 'gp_oai_settings' );
-				do_settings_sections( 'gp_oai_settings' );
+				settings_fields( 'gpoai_settings' );
+				do_settings_sections( 'gpoai_settings' );
 				submit_button();
 				?>
 			</form>

@@ -11,9 +11,9 @@ class ComposerStaticInitd82f6199266ba26d95b7080b5779066b
         array (
             'Orhanerday\\OpenAi\\' => 18,
         ),
-        'G' => 
+        'M' => 
         array (
-            'Gp\\OpenaiTranslate\\' => 19,
+            'Meloniq\\GpOpenaiTranslate\\' => 26,
         ),
     );
 
@@ -22,7 +22,7 @@ class ComposerStaticInitd82f6199266ba26d95b7080b5779066b
         array (
             0 => __DIR__ . '/..' . '/orhanerday/open-ai/src',
         ),
-        'Gp\\OpenaiTranslate\\' => 
+        'Meloniq\\GpOpenaiTranslate\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'gp/openai-translate',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'name' => 'meloniq/gp-openai-translate',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '5f0015aab2535e44a15f7427bfbc96bf85f327ca',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => false,
     ),
     'versions' => array(
-        'gp/openai-translate' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+        'meloniq/gp-openai-translate' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '5f0015aab2535e44a15f7427bfbc96bf85f327ca',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
