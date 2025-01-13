@@ -44,14 +44,3 @@ function setup() {
 }
 add_action( 'after_setup_theme', 'Gp\OpenaiTranslate\setup' );
 
-
-/**
- * Load Text-Domain.
- *
- * @return void
- */
-function load_textdomain() {
-	load_plugin_textdomain( GP_OAI_TD, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-add_action( 'plugins_loaded', 'Gp\OpenaiTranslate\load_textdomain' );
-
